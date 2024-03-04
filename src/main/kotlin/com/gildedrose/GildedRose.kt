@@ -37,36 +37,27 @@ class GildedRose(var items: List<Item>) {
     }
 
     private fun backStagePass(item: Item) {
-        if(item.quality < 50) {
-            foo(item)
-        } else {
-            foo(item)
-        }
-    }
-
-    private fun foo(item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
 
-            if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-                if (item.sellIn < 11) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1
-                    }
-                }
-
-                if (item.sellIn < 6) {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1
-                    }
+            if (item.sellIn < 11) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1
                 }
             }
-        }
-        if (item.name != "Sulfuras, Hand of Ragnaros") {
+
+            if (item.sellIn < 6) {
+                if (item.quality < 50) {
+                    item.quality = item.quality + 1
+                }
+            }
             item.sellIn = item.sellIn - 1
-        }
-        if (item.sellIn < 0) {
-            if (item.name != "Aged Brie") {
+            if (item.sellIn < 0) {
+                item.quality = item.quality - item.quality
+            }
+        } else {
+            item.sellIn = item.sellIn - 1
+            if (item.sellIn < 0) {
                 item.quality = item.quality - item.quality
             }
         }
