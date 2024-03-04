@@ -5,11 +5,11 @@ class GildedRose(var items: List<Item>) {
     fun updateQuality() {
         for (i in items.indices) {
             val item = items[i]
-            doThingWithItem(item)
+            tick(item)
         }
     }
 
-    private fun doThingWithItem(item: Item) {
+    private fun tick(item: Item) {
         if (item.name == "Aged Brie") {
             agedBrie(item)
         } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
