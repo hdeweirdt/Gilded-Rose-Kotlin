@@ -37,6 +37,14 @@ class GildedRose(var items: List<Item>) {
     }
 
     private fun backStagePass(item: Item) {
+        if(item.quality < 50) {
+            foo(item)
+        } else {
+            foo(item)
+        }
+    }
+
+    private fun foo(item: Item) {
         if (item.quality < 50) {
             item.quality = item.quality + 1
 
