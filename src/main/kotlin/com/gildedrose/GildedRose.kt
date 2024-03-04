@@ -9,6 +9,14 @@ class GildedRose(var items: List<Item>) {
     }
 
     private fun doThingWithItem(i: Int) {
+        if (items[i].name == "Aged Brie") {
+            foo(i)
+        } else {
+            foo(i)
+        }
+    }
+
+    private fun foo(i: Int) {
         if (items[i].name != "Aged Brie" && items[i].name != "Backstage passes to a TAFKAL80ETC concert") {
             if (items[i].quality > 0) {
                 if (items[i].name != "Sulfuras, Hand of Ragnaros") {
