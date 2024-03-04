@@ -12,16 +12,12 @@ class GildedRose(var items: List<Item>) {
     private fun doThingWithItem(item: Item) {
         if (item.name == "Aged Brie") {
             agedBrie(item)
+        } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
+            backStagePass(item)
+        } else if (item.name == "Sulfuras, Hand of Ragnaros") {
+            sulfuras(item)
         } else {
-            if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-                backStagePass(item)
-            } else {
-                if (item.name == "Sulfuras, Hand of Ragnaros") {
-                    sulfuras(item)
-                } else {
-                    regularItem(item)
-                }
-            }
+            regularItem(item)
         }
     }
 
