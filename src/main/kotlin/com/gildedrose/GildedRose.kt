@@ -15,7 +15,9 @@ class GildedRose(var items: List<Item>) {
             updatedItem.tick()
             item.updateUsing(updatedItem)
         } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-            backStagePass(item)
+            val updatedItem = BackstagePass(item)
+            updatedItem.tick()
+            item.updateUsing(updatedItem)
         } else if (item.name == "Sulfuras, Hand of Ragnaros") {
             sulfuras(item)
         } else {
@@ -38,35 +40,6 @@ class GildedRose(var items: List<Item>) {
     private fun sulfuras(item: Item) {
     }
 
-    private fun backStagePass(item: Item) {
-        if (item.quality < 50) {
-            item.quality += 1
-
-            if (item.quality < 50) {
-                if (item.sellIn < 11) {
-                    item.quality += 1
-                }
-                if (item.sellIn < 6) {
-                    item.quality += 1
-                }
-                item.sellIn -= 1
-                if (item.sellIn < 0) {
-                    item.quality = 0
-                }
-            } else {
-                item.sellIn -= 1
-                if (item.sellIn < 0) {
-                    item.quality = 0
-                }
-            }
-
-        } else {
-            item.sellIn -= 1
-            if (item.sellIn < 0) {
-                item.quality = 0
-            }
-        }
-    }
 
     private fun agedBrie(item: Item) {
         if (item.quality < 50) {
