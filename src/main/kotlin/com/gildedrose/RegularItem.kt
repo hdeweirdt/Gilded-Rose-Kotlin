@@ -1,9 +1,9 @@
 package com.gildedrose
 
-class RegularItem(name: String, sellIn: Int, quality: Int) : Item(name, sellIn, quality) {
+class RegularItem(name: String, sellIn: Int, quality: Int) : TickableItem(name, sellIn, quality) {
     constructor(item: Item) : this(item.name, item.sellIn, item.quality)
 
-   fun tick() {
+   override fun tick() {
         if (quality > 0) {
             quality -= 1
         }
