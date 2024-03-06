@@ -1,7 +1,6 @@
 package com.gildedrose
 
-class BackstagePass(name: String, sellIn: Int, quality: Int) : TickableItem(name, sellIn, quality) {
-    constructor(item: Item) : this(item.name, item.sellIn, item.quality)
+class BackstagePass(item: Item) : TickableItem(item.name, item.sellIn, item.quality) {
 
     override fun tick() {
         if (quality < 50) {
