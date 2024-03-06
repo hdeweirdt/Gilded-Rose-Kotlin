@@ -23,21 +23,12 @@ class GildedRose(var items: List<Item>) {
             updatedItem.tick()
             item.updateUsing(updatedItem)
         } else {
-            regularItem(item)
+            val updatedItem = RegularItem(item)
+            updatedItem.tick()
+            item.updateUsing(updatedItem)
         }
     }
 
-    private fun regularItem(item: Item) {
-        if (item.quality > 0) {
-            item.quality -= 1
-        }
-        item.sellIn -= 1
-        if (item.sellIn < 0) {
-            if (item.quality > 0) {
-                item.quality -= 1
-            }
-        }
-    }
 
     fun Item.updateUsing(other: Item) {
         quality = other.quality;
