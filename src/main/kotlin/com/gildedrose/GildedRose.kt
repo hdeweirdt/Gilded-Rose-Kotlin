@@ -10,23 +10,22 @@ class GildedRose(var items: List<Item>) {
     }
 
     private fun tick(item: Item) {
-        if (item.name == "Aged Brie") {
-            val updatedItem = AgedBrie(item)
-            updatedItem.tick()
-            item.updateUsing(updatedItem)
-        } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
-            val updatedItem = BackstagePass(item)
-            updatedItem.tick()
-            item.updateUsing(updatedItem)
-        } else if (item.name == "Sulfuras, Hand of Ragnaros") {
-            val updatedItem = Sulfuras(item)
-            updatedItem.tick()
-            item.updateUsing(updatedItem)
-        } else {
-            val updatedItem = RegularItem(item)
-            updatedItem.tick()
-            item.updateUsing(updatedItem)
+        val tickableItem = when (item.name) {
+            "Aged Brie" -> {
+                AgedBrie(item)
+            }
+            "Backstage passes to a TAFKAL80ETC concert" -> {
+                BackstagePass(item)
+            }
+            "Sulfuras, Hand of Ragnaros" -> {
+                Sulfuras(item)
+            }
+            else -> {
+                RegularItem(item)
+            }
         }
+        tickableItem.tick()
+        item.updateUsing(tickableItem)
     }
 
 
