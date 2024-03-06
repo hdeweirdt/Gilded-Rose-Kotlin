@@ -19,7 +19,9 @@ class GildedRose(var items: List<Item>) {
             updatedItem.tick()
             item.updateUsing(updatedItem)
         } else if (item.name == "Sulfuras, Hand of Ragnaros") {
-            sulfuras(item)
+            val updatedItem = Sulfuras(item)
+            updatedItem.tick()
+            item.updateUsing(updatedItem)
         } else {
             regularItem(item)
         }
@@ -36,10 +38,6 @@ class GildedRose(var items: List<Item>) {
             }
         }
     }
-
-    private fun sulfuras(item: Item) {
-    }
-
 
     fun Item.updateUsing(other: Item) {
         quality = other.quality;
