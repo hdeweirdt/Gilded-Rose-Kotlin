@@ -11,7 +11,9 @@ class GildedRose(var items: List<Item>) {
 
     private fun tick(item: Item) {
         if (item.name == "Aged Brie") {
-            agedBrie(item)
+            val updatedItem = AgedBrie(item)
+            updatedItem.tick()
+            item.updateUsing(updatedItem)
         } else if (item.name == "Backstage passes to a TAFKAL80ETC concert") {
             backStagePass(item)
         } else if (item.name == "Sulfuras, Hand of Ragnaros") {
@@ -76,6 +78,12 @@ class GildedRose(var items: List<Item>) {
                 item.quality += 1
             }
         }
+    }
+
+    fun Item.updateUsing(other: Item) {
+        quality = other.quality;
+        name = other.name;
+        sellIn = other.sellIn
     }
 
 }
