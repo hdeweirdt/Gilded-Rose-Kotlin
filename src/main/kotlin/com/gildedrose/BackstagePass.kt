@@ -13,22 +13,11 @@ class BackstagePass(item: Item) : TickableItem(item.name, item.sellIn, item.qual
                 if (sellIn < 6) {
                     quality += 1
                 }
-                sellIn -= 1
-                if (sellIn < 0) {
-                    quality = 0
-                }
-            } else {
-                sellIn -= 1
-                if (sellIn < 0) {
-                    quality = 0
-                }
             }
-
-        } else {
-            sellIn -= 1
-            if (sellIn < 0) {
-                quality = 0
-            }
+        }
+        sellIn -= 1
+        if (isExpired()) {
+            quality = 0
         }
     }
 }
