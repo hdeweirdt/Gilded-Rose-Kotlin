@@ -17,13 +17,11 @@ dependencies {
 	testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
 	testImplementation("org.junit.jupiter:junit-jupiter-params:5.10.0")
 	testImplementation("com.approvaltests:approvaltests:22.4.0")
+	testImplementation("org.assertj:assertj-core:3.25.3")
 }
 
-tasks.test {
+tasks.withType<Test>().configureEach {
 	useJUnitPlatform()
-	testLogging {
-		events("passed", "skipped", "failed")
-	}
 }
 
 // config JVM target to 1.8 for kotlin compilation tasks
