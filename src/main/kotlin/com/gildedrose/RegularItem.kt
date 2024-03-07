@@ -6,11 +6,13 @@ class RegularItem(item: Item) : TickableItem(item.name, item.sellIn, item.qualit
 
    override fun tick() {
        sellIn -= 1
-       if (sellIn < 0) {
+       if (isExpired()) {
            quality = max(quality - 2, 0)
        } else {
            quality = max(quality - 1, 0)
        }
    }
+
+    private fun isExpired() = sellIn < 0
 
 }
