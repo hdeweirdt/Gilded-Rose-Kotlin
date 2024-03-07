@@ -6,10 +6,10 @@ class AgedBrie(item: Item) : TickableItem(item.name, item.sellIn, item.quality) 
 
     override fun tick() {
         sellIn -= 1
-        quality = if (isReallyAged()) {
-            min(quality + 2, 50)
+        if (isReallyAged()) {
+            quality = min(quality + 2, MAX_QUALITY)
         } else {
-            min(quality + 1, 50)
+            quality = min(quality + 1, MAX_QUALITY)
         }
     }
 
