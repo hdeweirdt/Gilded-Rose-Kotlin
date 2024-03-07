@@ -1,25 +1,23 @@
 package com.gildedrose
 
+import kotlin.math.min
+
 class BackstagePass(item: Item) : TickableItem(item.name, item.sellIn, item.quality) {
 
     override fun tick() {
-        if (quality < 50) {
-            quality += 1
-
-            if (quality < 50) {
-                if (sellIn < 11) {
-                    quality += 1
-                }
-                if (sellIn < 6) {
-                    quality += 1
-                }
-            }
+        quality = min(quality + 1, 50)
+        if (sellIn < 11) {
+            quality = min(quality + 1, 50)
         }
+        if (sellIn < 6) {
+            quality = min(quality + 1, 50)
+        }
+
         sellIn -= 1
-        if (isExpired()) {
+        if (concertHasPassed()) {
             quality = 0
         }
     }
 
-    private fun isExpired() = sellIn < 0
+    private fun concertHasPassed() = sellIn < 0
 }
