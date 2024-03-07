@@ -16,7 +16,7 @@ class BackstagePass(item: Item) : TickableItem(item.name, item.sellIn, item.qual
             }
         }
         sellIn -= 1
-        if (isExpired()) {
+        if (sellIn < 0) {
             quality = 0
         }
     }
