@@ -1,16 +1,18 @@
 package com.gildedrose
 
-import org.junit.jupiter.api.Assertions.assertEquals
+import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
 
 internal class GildedRoseTest {
 
     @Test
-    fun foo() {
-        val items = listOf(Item("foo", 0, 0))
+    fun conjuredItemsGetProcessed() {
+        val items = listOf(Item("Conjured", 10, 10))
         val app = GildedRose(items)
+
         app.updateQuality()
-        assertEquals("fixme", app.items[0].name)
+
+        assertThat(app.items[0].quality).isEqualTo(8)
 
     }
 
