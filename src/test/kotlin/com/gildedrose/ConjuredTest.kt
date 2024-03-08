@@ -6,7 +6,7 @@ import org.junit.jupiter.params.ParameterizedTest
 import org.junit.jupiter.params.provider.ValueSource
 
 
-class ConjuredTest() {
+class ConjuredTest {
 
     @Test
     fun sellInReducesByOneEachTick() {
@@ -46,5 +46,16 @@ class ConjuredTest() {
         item.tick()
 
         assertThat(item.quality).isEqualTo(0)
+    }
+
+    @Test
+    fun conjuredItemWithSellInZeroFollowsFreshRulesForQuality() {
+        val initialQuality = 10
+        val twoDaysBeforeExpired = 1
+        val item = Conjured("Conjured", twoDaysBeforeExpired, initialQuality)
+
+        item.tick()
+
+        assertThat(item.quality).isEqualTo(initialQuality - 2)
     }
 }
