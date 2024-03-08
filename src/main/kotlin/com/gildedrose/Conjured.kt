@@ -1,16 +1,14 @@
 package com.gildedrose
 
-import kotlin.math.max
-
 class Conjured(name: String, sellIn: SellIn, quality: Quality) : TickableItem(name, sellIn, quality) {
 
     override fun tick() {
         sellIn -= 1
 
         if(sellIn < 0) {
-           quality = max(quality-4, 0)
+            quality = (quality - 4).atLeast(0)
         } else {
-            quality = max(quality-2, 0)
+            quality = (quality - 2).atLeast(0)
         }
     }
 

@@ -1,15 +1,13 @@
 package com.gildedrose
 
-import kotlin.math.max
-
 class RegularItem(name: String, sellIn: SellIn, quality: Quality) : TickableItem(name, sellIn, quality) {
 
    override fun tick() {
        sellIn -= 1
        if (isExpired()) {
-           quality = max(quality - 2, 0)
+           quality = (quality - 2).atLeast(0)
        } else {
-           quality = max(quality - 1, 0)
+           quality = (quality - 1).atLeast(0)
        }
    }
 

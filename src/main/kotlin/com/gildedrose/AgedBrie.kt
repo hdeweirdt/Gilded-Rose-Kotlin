@@ -1,15 +1,13 @@
 package com.gildedrose
 
-import kotlin.math.min
-
 class AgedBrie(name: String, sellIn: SellIn, quality: Quality) : TickableItem(name, sellIn, quality) {
 
     override fun tick() {
         sellIn -= 1
         if (isReallyAged()) {
-            quality = min(quality + 2, MAX_QUALITY)
+            quality = (quality + 2).capAt(MAX_QUALITY)
         } else {
-            quality = min(quality + 1, MAX_QUALITY)
+            quality = (quality + 1).capAt(MAX_QUALITY)
         }
     }
 
