@@ -2,6 +2,8 @@ package com.gildedrose
 
 import org.assertj.core.api.AssertionsForInterfaceTypes.assertThat
 import org.junit.jupiter.api.Test
+import org.junit.jupiter.params.ParameterizedTest
+import org.junit.jupiter.params.provider.ValueSource
 
 
 class ConjuredTest() {
@@ -34,5 +36,15 @@ class ConjuredTest() {
         item.tick()
 
         assertThat(item.quality).isEqualTo(initialQuality - 4)
+    }
+
+    @ParameterizedTest
+    @ValueSource(ints = [0, 10])
+    fun qualityCannotGoLowerThanZero(initialQuality: Int) {
+        val item = Conjured("Conjured", initialQuality, 1)
+
+        item.tick()
+
+        assertThat(item.quality).isEqualTo(0)
     }
 }
