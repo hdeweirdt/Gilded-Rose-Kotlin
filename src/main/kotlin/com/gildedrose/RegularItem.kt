@@ -2,7 +2,7 @@ package com.gildedrose
 
 import kotlin.math.max
 
-class RegularItem(name: String, sellIn: Int, quality: Int) : TickableItem(name, sellIn, quality) {
+class RegularItem(name: String, sellIn: SellIn, quality: Quality) : TickableItem(name, sellIn, quality) {
 
    override fun tick() {
        sellIn -= 1

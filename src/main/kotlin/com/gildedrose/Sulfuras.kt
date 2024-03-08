@@ -1,6 +1,6 @@
 package com.gildedrose
 
-class Sulfuras(name: String, sellIn: Int, quality: Int) : TickableItem(name, sellIn, quality) {
+class Sulfuras(name: String, sellIn: SellIn, quality: Quality) : TickableItem(name, sellIn, quality) {
 
     override fun tick() {
     }

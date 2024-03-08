@@ -2,7 +2,7 @@ package com.gildedrose
 
 import kotlin.math.min
 
-class AgedBrie(name: String, sellIn: Int, quality: Int) : TickableItem(name, sellIn, quality) {
+class AgedBrie(name: String, sellIn: SellIn, quality: Quality) : TickableItem(name, sellIn, quality) {
 
     override fun tick() {
         sellIn -= 1
