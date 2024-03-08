@@ -15,4 +15,14 @@ class ConjuredTest() {
 
         assertThat(item.sellIn).isEqualTo(initialSellIn - 1)
     }
+
+    @Test
+    fun qualityReducesByTwoEachTick() {
+        val initialQuality = 10
+        val item = Conjured("Conjured", 10, initialQuality)
+
+        item.tick()
+
+        assertThat(item.quality).isEqualTo(initialQuality - 2)
+    }
 }
