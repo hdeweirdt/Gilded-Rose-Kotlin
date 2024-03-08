@@ -6,14 +6,13 @@ import org.junit.jupiter.api.Test
 internal class GildedRoseTest {
 
     @Test
-    fun conjuredItemsGetProcessed() {
+    fun conjuredItemsGetProcessedAccordingToTheirRules() {
         val items = listOf(Item("Conjured", 10, 10))
         val app = GildedRose(items)
 
         app.updateQuality()
 
         assertThat(app.items[0].quality).isEqualTo(8)
-
     }
 
 }

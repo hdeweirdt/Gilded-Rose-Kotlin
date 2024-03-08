@@ -1,6 +1,6 @@
 package com.gildedrose
 
-import kotlin.reflect.KFunction1
+import kotlin.reflect.KFunction3
 
 class GildedRose(var items: List<Item>) {
 
@@ -8,10 +8,11 @@ class GildedRose(var items: List<Item>) {
     // We do however like having the 'tick' logic for each possible item in their appropriate class.
     // We accomplish this by mapping the possible names to constructors for the specific subclasses
     // and then modifying the original items by reference.
-    private val itemClassMap: Map<String, KFunction1<Item, TickableItem>> = mapOf(
+    private val itemClassMap: Map<String, KFunction3<String, Int, Int, TickableItem>> = mapOf(
         "Aged Brie" to ::AgedBrie,
         "Backstage passes to a TAFKAL80ETC concert" to ::BackstagePass,
         "Sulfuras, Hand of Ragnaros" to ::Sulfuras,
+        "Conjured" to ::Conjured
     )
 
     fun updateQuality() {
@@ -25,7 +26,7 @@ class GildedRose(var items: List<Item>) {
 
     private fun createTickableItem(item: Item): TickableItem {
         val constructorForItem = itemClassMap.getOrDefault(item.name, ::RegularItem)
-        val tickableItem = constructorForItem(item)
+        val tickableItem = constructorForItem.invoke(item.name, item.sellIn, item.quality)
         return tickableItem
     }
 

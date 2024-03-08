@@ -2,7 +2,7 @@ package com.gildedrose
 
 import kotlin.math.min
 
-class BackstagePass(item: Item) : TickableItem(item.name, item.sellIn, item.quality) {
+class BackstagePass(name: String, sellIn: Int, quality: Int) : TickableItem(name, sellIn, quality) {
 
     override fun tick() {
         if (sellIn <= 5) {
