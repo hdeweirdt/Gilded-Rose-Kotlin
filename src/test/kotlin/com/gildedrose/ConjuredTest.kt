@@ -21,7 +21,7 @@ class ConjuredTest {
     @Test
     fun qualityReducesByTwoEachTick() {
         val initialQuality = 10
-        val item = Conjured("Conjured", 10, initialQuality)
+        val item = freshConjuredWithQuality(initialQuality)
 
         item.tick()
 
@@ -31,7 +31,7 @@ class ConjuredTest {
     @Test
     fun expiredItemsQualityReducesByFourEachTick() {
         val initialQuality = 10
-        val item = Conjured("Conjured", -1, initialQuality)
+        val item = expiredConjuredWithQuality(initialQuality)
 
         item.tick()
 
@@ -41,9 +41,9 @@ class ConjuredTest {
     @ParameterizedTest
     @ValueSource(ints = [0, 10])
     fun qualityCannotGoLowerThanZero(initialQuality: Int) {
-        val item = Conjured("Conjured", initialQuality, 1)
+        val item = freshConjuredWithQuality(initialQuality)
 
-        item.tick()
+        repeat(15) { item.tick() }
 
         assertThat(item.quality).isEqualTo(0)
     }
@@ -57,5 +57,13 @@ class ConjuredTest {
         item.tick()
 
         assertThat(item.quality).isEqualTo(initialQuality - 2)
+    }
+
+    private fun expiredConjuredWithQuality(initialQuality: Int): Conjured {
+        return Conjured("Conjured", -10, initialQuality)
+    }
+
+    private fun freshConjuredWithQuality(initialQuality: Int): Conjured {
+        return Conjured("Conjured", 10, initialQuality)
     }
 }
