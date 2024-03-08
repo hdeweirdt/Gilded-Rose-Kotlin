@@ -25,4 +25,14 @@ class ConjuredTest() {
 
         assertThat(item.quality).isEqualTo(initialQuality - 2)
     }
+
+    @Test
+    fun expiredItemsQualityReducesByFourEachTick() {
+        val initialQuality = 10
+        val item = Conjured("Conjured", -1, initialQuality)
+
+        item.tick()
+
+        assertThat(item.quality).isEqualTo(initialQuality - 4)
+    }
 }
