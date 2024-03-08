@@ -5,11 +5,11 @@ import kotlin.math.min
 class BackstagePass(item: Item) : TickableItem(item.name, item.sellIn, item.quality) {
 
     override fun tick() {
-        quality = min(quality + 1, MAX_QUALITY)
-        if (sellIn < 11) {
-            quality = min(quality + 1, MAX_QUALITY)
-        }
-        if (sellIn < 6) {
+        if (sellIn <= 5) {
+            quality = min(quality + 3, MAX_QUALITY)
+        } else if (sellIn <= 10) {
+            quality = min(quality + 2, MAX_QUALITY)
+        } else {
             quality = min(quality + 1, MAX_QUALITY)
         }
 
